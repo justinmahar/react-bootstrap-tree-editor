@@ -14,6 +14,7 @@ export interface BasicTreeNodeComponentProps extends DivProps {
   treeController: TreeController;
   editable?: boolean;
   showBullets?: boolean;
+  showPointer?: boolean;
   shortcuts?: TreeShortcuts;
 }
 
@@ -22,6 +23,7 @@ export const BasicTreeNodeComponent = ({
   treeController,
   editable = false,
   showBullets = false,
+  showPointer = false,
   shortcuts,
   ...props
 }: BasicTreeNodeComponentProps) => {
@@ -86,6 +88,7 @@ export const BasicTreeNodeComponent = ({
         editable={editable}
         shortcuts={shortcuts}
         showBullets={showBullets}
+        showPointer={showPointer}
       />
     );
   });
@@ -103,7 +106,7 @@ export const BasicTreeNodeComponent = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {isFocused && (
+          {showPointer && isFocused && (
             <div className="position-absolute" style={{ left: -20 }}>
               <FaHandPointRight />
             </div>

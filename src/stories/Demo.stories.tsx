@@ -14,7 +14,7 @@ export default {
   component: TreeEditorDemo,
 } as ComponentMeta<typeof TreeEditorDemo>;
 
-const Template: ComponentStory<typeof TreeEditorDemo> = (args) => <TreeEditorDemo {...args} />;
+const Template: ComponentStory<typeof TreeEditorDemo> = (args) => <TreeEditorDemo />;
 
 export const Demo = Template.bind({});
 // Demo.args = {
