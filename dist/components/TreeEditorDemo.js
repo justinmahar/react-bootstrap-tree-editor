@@ -27,6 +27,7 @@ exports.demoTreeData = exports.TreeEditorDemo = void 0;
 require("bootstrap/dist/css/bootstrap.css");
 const React = __importStar(require("react"));
 const react_bootstrap_1 = require("react-bootstrap");
+const fa_1 = require("react-icons/fa");
 const react_sub_unsub_1 = require("react-sub-unsub");
 const TreeControllerOptions_1 = require("../hooks/TreeControllerOptions");
 const useTreeController_1 = require("../hooks/useTreeController");
@@ -34,11 +35,10 @@ const useTreeShortcuts_1 = require("../hooks/useTreeShortcuts");
 const useTreeState_1 = require("../hooks/useTreeState");
 const utils_1 = require("../utils/utils");
 const BasicTreeNodeComponent_1 = require("./BasicTreeNodeComponent");
-const fa_1 = require("react-icons/fa");
 const TreeEditorDemo = () => {
     const [treeEditingEnabled, setTreeEditingEnabled] = React.useState(true);
     const treeOptions = TreeControllerOptions_1.defaultTreeControllerOptions;
-    const [tree, setTree] = (0, useTreeState_1.useTreeState)(useTreeState_1.defaultTreeData);
+    const [tree, setTree] = (0, useTreeState_1.useTreeState)(exports.demoTreeData);
     const treeController = (0, useTreeController_1.useTreeController)(tree, setTree, treeOptions);
     const [enteredSearch, setEnteredSearch] = React.useState('');
     const trimmedEnteredSearch = enteredSearch.trim();
@@ -103,7 +103,8 @@ const TreeEditorDemo = () => {
                                 " and powered by",
                                 ' ',
                                 React.createElement("a", { href: "https://github.com/justinmahar/versatile-tree" }, "versatile-tree"),
-                                ". You will likely want to customize this further, but this demo serves as a good starting point should you be interested in using this project."),
+                                "."),
+                            React.createElement("p", null, "You will likely want to customize this further, but this demo serves as a good starting point should you be interested in using this project."),
                             React.createElement("p", null,
                                 "A few handy things you can try out:",
                                 React.createElement("ul", null,
@@ -124,11 +125,19 @@ const TreeEditorDemo = () => {
                                     React.createElement("li", null,
                                         React.createElement("span", { className: "fw-bold" }, "Searching"),
                                         " - Full tree searching, including auto node expansion on matches. Try searching for \"dragon\"."))),
-                            React.createElement("p", { className: "mb-0" },
+                            React.createElement("p", null,
                                 "You can",
                                 ' ',
                                 React.createElement("a", { href: "https://github.com/justinmahar/react-bootstrap-tree-editor/blob/master/src/components/TreeEditorDemo.tsx" }, "view the source here"),
-                                ".")),
+                                "."),
+                            React.createElement("p", { className: "mb-0" },
+                                "If this project helps you, please",
+                                ' ',
+                                React.createElement("a", { href: "https://github.com/justinmahar/react-bootstrap-tree-editor" }, "star it on GitHub"),
+                                " and consider",
+                                ' ',
+                                React.createElement("a", { href: "https://github.com/justinmahar/react-bootstrap-tree-editor#donate" }, "buying me a coffee"),
+                                " if you're feeling appreciative! \u2615\uFE0F")),
                         React.createElement("div", { className: "d-flex justify-content-between align-items-center gap-2" },
                             React.createElement("h4", { className: "mb-0" }, "Tree Editor"),
                             React.createElement("div", { className: "d-flex align-items-center gap-1" },
