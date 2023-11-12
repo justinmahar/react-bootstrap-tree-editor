@@ -85,11 +85,14 @@ It's highly recommended you check out the [demo](https://justinmahar.github.io/r
 Import the following:
 
 ```jsx
-import { defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
-import { useTreeController } from '../hooks/useTreeController';
-import { useTreeShortcuts } from '../hooks/useTreeShortcuts';
-import { defaultTreeData, useTreeState } from '../hooks/useTreeState';
-import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
+import {
+  BasicTreeNodeComponent,
+  defaultTreeControllerOptions,
+  defaultTreeData,
+  useTreeController,
+  useTreeShortcuts,
+  useTreeState,
+} from 'react-bootstrap-tree-editor';
 ```
 
 Inside your function component:
@@ -147,7 +150,7 @@ By default, tree nodes have an ID with property name `id`, and titles with prope
 The default options can be imported via the following:
 
 ```js
-import { defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
+import { defaultTreeControllerOptions } from 'react-bootstrap-tree-editor';
 ```
 
 To customize options, you can provide useTreeController with your own tree options. For example, let's suppose we'd like to use `uid` as the ID prop and `name` as the title prop, and generate our own custom IDs. To support this, you can create your own custom tree controller options like so:
