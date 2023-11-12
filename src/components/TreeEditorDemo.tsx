@@ -123,7 +123,9 @@ export const TreeEditorDemo = () => {
                   .
                 </p>
                 <p className="mb-0">
-                  If this project helps you, please <a href="">star it on GitHub</a> and consider{' '}
+                  If this project helps you, please{' '}
+                  <a href="https://github.com/justinmahar/react-bootstrap-tree-editor">star it on GitHub</a> and
+                  consider{' '}
                   <a href="https://github.com/justinmahar/react-bootstrap-tree-editor#donate">buying me a coffee</a> if
                   you're feeling appreciative! ☕️
                 </p>
