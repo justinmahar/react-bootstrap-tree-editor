@@ -6,7 +6,7 @@ import { TreeNode } from 'versatile-tree';
 import { TreeControllerOptions, defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
 import { TreeController, useTreeController } from '../hooks/useTreeController';
 import { useTreeShortcuts } from '../hooks/useTreeShortcuts';
-import { useTreeState } from '../hooks/useTreeState';
+import { defaultTreeData, useTreeState } from '../hooks/useTreeState';
 import { KeyCode } from '../utils/utils';
 import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
 import { FaEllipsisV } from 'react-icons/fa';
@@ -14,7 +14,7 @@ import { FaEllipsisV } from 'react-icons/fa';
 export const TreeEditorDemo = () => {
   const [treeEditingEnabled, setTreeEditingEnabled] = React.useState(true);
   const treeOptions: TreeControllerOptions = defaultTreeControllerOptions;
-  const [tree, setTree] = useTreeState(demoTreeData);
+  const [tree, setTree] = useTreeState(defaultTreeData);
   const treeController: TreeController = useTreeController(tree, setTree, treeOptions);
 
   const [enteredSearch, setEnteredSearch] = React.useState('');
@@ -83,7 +83,7 @@ export const TreeEditorDemo = () => {
                 <p>
                   This is a demo of{' '}
                   <a href="https://github.com/justinmahar/react-bootstrap-tree-editor">react-bootstrap-tree-editor</a>,
-                  build on <a href="https://react-bootstrap.netlify.app/">react-bootstrap</a> and powered by{' '}
+                  built on <a href="https://react-bootstrap.netlify.app/">react-bootstrap</a> and powered by{' '}
                   <a href="https://github.com/justinmahar/versatile-tree">versatile-tree</a>. You will likely want to
                   customize this further, but this demo serves as a good starting point should you be interested in
                   using this project.
