@@ -61,6 +61,7 @@
     "webpack": "^5.75.0"
   },
   "dependencies": {
+    "bootstrap": "^5.3.2",
     "keycode-js": "^3.1.0",
     "react-bootstrap": "^2.8.0",
     "react-device-detect": "^2.2.3",

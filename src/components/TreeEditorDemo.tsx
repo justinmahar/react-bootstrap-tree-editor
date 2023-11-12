@@ -1,18 +1,20 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import * as React from 'react';
 import { Badge, Col, Container, Form, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { Subs } from 'react-sub-unsub';
 import { TreeNode } from 'versatile-tree';
-import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
 import { TreeControllerOptions, defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
-import { defaultTreeData, useTreeState } from '../hooks/useTreeState';
 import { TreeController, useTreeController } from '../hooks/useTreeController';
 import { useTreeShortcuts } from '../hooks/useTreeShortcuts';
+import { useTreeState } from '../hooks/useTreeState';
 import { KeyCode } from '../utils/utils';
+import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
+import { demoTreeData } from './demoTreeData';
 
 export const TreeEditorDemo = (props: any) => {
   const [treeEditingEnabled, setTreeEditingEnabled] = React.useState(true);
   const treeOptions: TreeControllerOptions = defaultTreeControllerOptions;
-  const [tree, setTree] = useTreeState(defaultTreeData);
+  const [tree, setTree] = useTreeState(demoTreeData);
   const treeController: TreeController = useTreeController(tree, setTree, treeOptions);
 
   const [enteredSearch, setEnteredSearch] = React.useState('');
@@ -50,6 +52,11 @@ export const TreeEditorDemo = (props: any) => {
     }
   }, [treeController.focus, treeController.mutations, treeController.tree, treeController.options]);
 
+  // Expand all on first render
+  React.useEffect(() => {
+    treeController.expansions.expandAll();
+  }, []); // Leave deps empty (run only once)
+
   React.useEffect(() => {
     const subs = new Subs();
     if (trimmedEnteredSearch) {
@@ -74,7 +81,7 @@ export const TreeEditorDemo = (props: any) => {
                 <h4 className="mb-0">Tree Editor</h4>
                 <div className="d-flex align-items-center gap-1">
                   <OverlayTrigger
-                    placement="top"
+                    placement="left"
                     delay={{ show: 0, hide: 0 }}
                     overlay={
                       <Tooltip id="tooltip-editing">
