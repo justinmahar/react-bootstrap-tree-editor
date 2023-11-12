@@ -28,7 +28,21 @@ An interactive tree editor built on [react-bootstrap](https://react-bootstrap.ne
 ### Features include:
 
 - **🌲 Interactive tree editing**
-  - React-Bootstrap powered component for editing trees
+  - React-Bootstrap powered hooks and components for editing trees.
+- **🌐 Expansion Management**
+  - Track which nodes are expanded/collapsed.
+- **👉 Focus Management**
+  - Track and retrieve which node has focus.
+- **🔥 Shortcuts**
+  - Customizable shortcuts for easy tree manipulation.
+- **🖊️ Edit and View Modes**
+  - Easily switch between editing and viewing.
+- **🔍 Filters &amp; Search**
+  - Provide a filter function to make tree searchable and filterable.
+- **🗑️ Deletion &amp; Recovery**
+  - Delete nodes and easily recover them.
+- **🌴 Powered by [versatile-tree](https://github.com/justinmahar/versatile-tree)**
+  - Easy to use tree structure. Easily convert tree to/from Object and JSON forms.
 
 [lock:donate]::🚫---------------------------------------
 
