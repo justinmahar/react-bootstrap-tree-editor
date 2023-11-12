@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
- <a href="https://justinmahar.github.io/react-bootstrap-tree-editor/?path=/story/stories-demo--demo"><img src="https://raw.githubusercontent.com/justinmahar/react-bootstrap-tree-editor/master/screenshots/demo.png" width="400"></a>
+ <a href="https://justinmahar.github.io/react-bootstrap-tree-editor/?path=/story/stories-demo--demo"><img src="https://raw.githubusercontent.com/justinmahar/react-bootstrap-tree-editor/master/screenshots/demo.png" width="400" /></a>
 </p>
 
 <h2 align="center"><a href="https://justinmahar.github.io/react-bootstrap-tree-editor/?path=/story/stories-demo--demo">👁️ View Demo</a></h2>
@@ -23,7 +23,7 @@ Read the **[official documentation](https://justinmahar.github.io/react-bootstra
 
 ## Overview
 
-An interactive tree editor built on react-bootstrap.
+An interactive tree editor built on [react-bootstrap](https://react-bootstrap.netlify.app/) and powered by [versatile-tree](https://github.com/justinmahar/versatile-tree).
 
 ### Features include:
 
