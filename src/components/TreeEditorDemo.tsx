@@ -81,9 +81,10 @@ export const TreeEditorDemo = () => {
                 <p>
                   This is a demo of{' '}
                   <a href="https://github.com/justinmahar/react-bootstrap-tree-editor">react-bootstrap-tree-editor</a>,
-                  powered by <a href="https://github.com/justinmahar/versatile-tree">versatile-tree</a>. You will likely
-                  want to customize this further, but this demo serves as a good starting point should you be interested
-                  in using this project.
+                  build on <a href="https://react-bootstrap.netlify.app/">react-bootstrap</a> and powered by{' '}
+                  <a href="https://github.com/justinmahar/versatile-tree">versatile-tree</a>. You will likely want to
+                  customize this further, but this demo serves as a good starting point should you be interested in
+                  using this project.
                 </p>
                 <p>
                   A few handy things you can try out:
