@@ -15,8 +15,14 @@ const TreeEditorDemo_1 = require("../components/TreeEditorDemo");
 exports.default = {
     title: 'Stories/Demo',
     component: TreeEditorDemo_1.TreeEditorDemo,
+    parameters: {
+        controls: {
+            disabled: true,
+        },
+        options: { showPanel: false },
+    },
 };
-const Template = (args) => react_1.default.createElement(TreeEditorDemo_1.TreeEditorDemo, Object.assign({}, args));
+const Template = (args) => react_1.default.createElement(TreeEditorDemo_1.TreeEditorDemo, null);
 exports.Demo = Template.bind({});
 // Demo.args = {
 //   label: 'World',

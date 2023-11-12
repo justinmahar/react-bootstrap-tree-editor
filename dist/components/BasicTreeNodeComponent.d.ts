@@ -8,6 +8,7 @@ export interface BasicTreeNodeComponentProps extends DivProps {
     treeController: TreeController;
     editable?: boolean;
     showBullets?: boolean;
+    showPointer?: boolean;
     shortcuts?: TreeShortcuts;
 }
-export declare const BasicTreeNodeComponent: ({ node, treeController, editable, showBullets, shortcuts, ...props }: BasicTreeNodeComponentProps) => React.JSX.Element;
+export declare const BasicTreeNodeComponent: ({ node, treeController, editable, showBullets, showPointer, shortcuts, ...props }: BasicTreeNodeComponentProps) => React.JSX.Element;

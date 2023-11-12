@@ -24,7 +24,7 @@ const BasicTreeNodeDropdown_1 = require("./BasicTreeNodeDropdown");
 const utils_1 = require("../utils/utils");
 const BasicTreeNodeComponent = (_a) => {
     var _b;
-    var { node, treeController, editable = false, showBullets = false, shortcuts } = _a, props = __rest(_a, ["node", "treeController", "editable", "showBullets", "shortcuts"]);
+    var { node, treeController, editable = false, showBullets = false, showPointer = false, shortcuts } = _a, props = __rest(_a, ["node", "treeController", "editable", "showBullets", "showPointer", "shortcuts"]);
     const expanded = treeController.expansions.isExpandedNode(node);
     const [hovering, setHovering] = react_1.default.useState(false);
     const children = (_b = node.getChildren()) !== null && _b !== void 0 ? _b : [];
@@ -62,12 +62,12 @@ const BasicTreeNodeComponent = (_a) => {
     const entryElements = childrenToRender.map((childNode, i) => {
         var _a, _b;
         const elemKey = (0, utils_1.key)(`parent`, (_a = node.getData()[treeController.options.idPropertyName]) !== null && _a !== void 0 ? _a : useTreeController_1.UNDEFINED_ID, 'child', (_b = childNode.getData()[treeController.options.idPropertyName]) !== null && _b !== void 0 ? _b : useTreeController_1.UNDEFINED_ID, 'index', i);
-        return (react_1.default.createElement(exports.BasicTreeNodeComponent, { key: elemKey, node: childNode, treeController: treeController, editable: editable, shortcuts: shortcuts, showBullets: showBullets }));
+        return (react_1.default.createElement(exports.BasicTreeNodeComponent, { key: elemKey, node: childNode, treeController: treeController, editable: editable, shortcuts: shortcuts, showBullets: showBullets, showPointer: showPointer }));
     });
     const iconWidth = 14;
     return (react_1.default.createElement("div", Object.assign({}, props, { className: (0, classnames_1.default)(props.className), style: Object.assign({}, props.style) }),
         !node.isRoot() && (react_1.default.createElement("div", { className: (0, classnames_1.default)('d-flex align-items-center gap-1 position-relative'), onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
-            isFocused && (react_1.default.createElement("div", { className: "position-absolute", style: { left: -20 } },
+            showPointer && isFocused && (react_1.default.createElement("div", { className: "position-absolute", style: { left: -20 } },
                 react_1.default.createElement(fa_1.FaHandPointRight, null))),
             hasChildren && (react_1.default.createElement("div", { className: "d-flex justify-content-center align-items-center user-select-none cursor-pointer", style: { width: iconWidth }, onClick: handleToggleShowChildren }, expanded && hasChildren ? react_1.default.createElement(fa_1.FaAngleDown, null) : react_1.default.createElement(fa_1.FaAngleRight, { style: { opacity: !hasChildren ? 0 : 1 } }))),
             !hasChildren && (react_1.default.createElement("div", { className: "d-flex justify-content-center align-items-center user-select-none", style: { width: iconWidth } }, showBullets && react_1.default.createElement(fa_1.FaCircle, { style: { fontSize: '30%' } }))),

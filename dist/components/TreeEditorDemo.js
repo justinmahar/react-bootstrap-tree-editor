@@ -23,20 +23,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TreeEditorDemo = void 0;
+exports.demoTreeData = exports.TreeEditorDemo = void 0;
+require("bootstrap/dist/css/bootstrap.css");
 const React = __importStar(require("react"));
 const react_bootstrap_1 = require("react-bootstrap");
 const react_sub_unsub_1 = require("react-sub-unsub");
-const BasicTreeNodeComponent_1 = require("./BasicTreeNodeComponent");
 const TreeControllerOptions_1 = require("../hooks/TreeControllerOptions");
-const useTreeState_1 = require("../hooks/useTreeState");
 const useTreeController_1 = require("../hooks/useTreeController");
 const useTreeShortcuts_1 = require("../hooks/useTreeShortcuts");
+const useTreeState_1 = require("../hooks/useTreeState");
 const utils_1 = require("../utils/utils");
-const TreeEditorDemo = (props) => {
+const BasicTreeNodeComponent_1 = require("./BasicTreeNodeComponent");
+const fa_1 = require("react-icons/fa");
+const TreeEditorDemo = () => {
     const [treeEditingEnabled, setTreeEditingEnabled] = React.useState(true);
     const treeOptions = TreeControllerOptions_1.defaultTreeControllerOptions;
-    const [tree, setTree] = (0, useTreeState_1.useTreeState)(useTreeState_1.defaultTreeData);
+    const [tree, setTree] = (0, useTreeState_1.useTreeState)(exports.demoTreeData);
     const treeController = (0, useTreeController_1.useTreeController)(tree, setTree, treeOptions);
     const [enteredSearch, setEnteredSearch] = React.useState('');
     const trimmedEnteredSearch = enteredSearch.trim();
@@ -67,6 +69,10 @@ const TreeEditorDemo = (props) => {
             treeController.focus.setFocusedNode(node);
         }
     }, [treeController.focus, treeController.mutations, treeController.tree, treeController.options]);
+    // Expand all on first render
+    React.useEffect(() => {
+        treeController.expansions.expandAll();
+    }, []); // Leave deps empty (run only once)
     React.useEffect(() => {
         const subs = new react_sub_unsub_1.Subs();
         if (trimmedEnteredSearch) {
@@ -85,10 +91,46 @@ const TreeEditorDemo = (props) => {
             React.createElement(react_bootstrap_1.Col, { sm: { offset: 2, span: 8 } },
                 React.createElement("div", { className: "d-flex flex-column gap-3" },
                     React.createElement("div", { className: "d-flex flex-column gap-3" },
+                        React.createElement(react_bootstrap_1.Alert, { variant: "primary" },
+                            React.createElement("p", null,
+                                "This is a demo of",
+                                ' ',
+                                React.createElement("a", { href: "https://github.com/justinmahar/react-bootstrap-tree-editor" }, "react-bootstrap-tree-editor"),
+                                ", build on ",
+                                React.createElement("a", { href: "https://react-bootstrap.netlify.app/" }, "react-bootstrap"),
+                                " and powered by",
+                                ' ',
+                                React.createElement("a", { href: "https://github.com/justinmahar/versatile-tree" }, "versatile-tree"),
+                                ". You will likely want to customize this further, but this demo serves as a good starting point should you be interested in using this project."),
+                            React.createElement("p", null,
+                                "A few handy things you can try out:",
+                                React.createElement("ul", null,
+                                    React.createElement("li", null,
+                                        React.createElement("span", { className: "fw-bold" }, "Edit/View Modes"),
+                                        " - Switch from Edit to View mode using the toggle switch."),
+                                    React.createElement("li", null,
+                                        React.createElement("span", { className: "fw-bold" }, "Keyboard Editing"),
+                                        " - Use Enter to insert items below, Shift+Enter to insert inside. Customizable shortcuts are available for moving items."),
+                                    React.createElement("li", null,
+                                        React.createElement("span", { className: "fw-bold" }, "Actions Dropdown"),
+                                        " - Click the ellipsis ",
+                                        React.createElement(fa_1.FaEllipsisV, null),
+                                        " to view actions and their associated shortcuts."),
+                                    React.createElement("li", null,
+                                        React.createElement("span", { className: "fw-bold" }, "Deletion & Recovery"),
+                                        " - Delete items from the tree and recover them if deleted on accident."),
+                                    React.createElement("li", null,
+                                        React.createElement("span", { className: "fw-bold" }, "Searching"),
+                                        " - Full tree searching, including auto node expansion on matches. Try searching for \"dragon\"."))),
+                            React.createElement("p", { className: "mb-0" },
+                                "You can",
+                                ' ',
+                                React.createElement("a", { href: "https://github.com/justinmahar/react-bootstrap-tree-editor/blob/master/src/components/TreeEditorDemo.tsx" }, "view the source here"),
+                                ".")),
                         React.createElement("div", { className: "d-flex justify-content-between align-items-center gap-2" },
                             React.createElement("h4", { className: "mb-0" }, "Tree Editor"),
                             React.createElement("div", { className: "d-flex align-items-center gap-1" },
-                                React.createElement(react_bootstrap_1.OverlayTrigger, { placement: "top", delay: { show: 0, hide: 0 }, overlay: React.createElement(react_bootstrap_1.Tooltip, { id: "tooltip-editing" },
+                                React.createElement(react_bootstrap_1.OverlayTrigger, { placement: "left", delay: { show: 0, hide: 0 }, overlay: React.createElement(react_bootstrap_1.Tooltip, { id: "tooltip-editing" },
                                         "Switch to ",
                                         !treeEditingEnabled ? 'Edit' : 'View',
                                         " mode. (Ctrl+Shift+E)") },
@@ -100,6 +142,49 @@ const TreeEditorDemo = (props) => {
                             React.createElement(react_bootstrap_1.Badge, { bg: "dark" }, treeController.filters.filteredNodes.length),
                             " result",
                             treeController.filters.filteredNodes.length !== 1 && 's')),
-                        React.createElement(BasicTreeNodeComponent_1.BasicTreeNodeComponent, { node: treeController.tree, treeController: treeController, editable: !!treeEditingEnabled, shortcuts: shortcuts, showBullets: !treeEditingEnabled })))))));
+                        React.createElement(BasicTreeNodeComponent_1.BasicTreeNodeComponent, { node: treeController.tree, treeController: treeController, editable: !!treeEditingEnabled, shortcuts: shortcuts, showBullets: !treeEditingEnabled, showPointer: false })))))));
 };
 exports.TreeEditorDemo = TreeEditorDemo;
+exports.demoTreeData = {
+    title: 'root',
+    children: [
+        {
+            id: '0c48797c-619c-4b97-bb02-73e486dfeb26',
+            title: '📋 Tasks',
+            children: [
+                { id: '2eaa1992-b2c7-4d4e-b088-1d539dd54be3', title: '🧺 Do laundry', children: [] },
+                { id: 'c90c5af0-46a4-41c8-916d-983b53c44fcd', title: '🥘 Meal prep', children: [] },
+                { id: 'cb82ba25-4283-481c-b7bc-6dd08759b41a', title: '🐉 Slay dragon', children: [] },
+            ],
+        },
+        {
+            id: '3a1986b0-7c83-42f4-b5a0-28c86520530e',
+            title: '🚗 Errands',
+            children: [
+                {
+                    id: '687b042e-58cc-4f8f-9abe-9588ee73a4b3',
+                    title: 'Groceries',
+                    children: [
+                        { id: 'e7a422f6-d6f0-4c71-8545-9b2c71c50491', title: '🥩 Meat', children: [] },
+                        { id: '726e09a7-a385-41ae-80a7-fae8a74747c5', title: '🥦 Veggies', children: [] },
+                        { id: 'cfd7fac3-5a25-473f-ba1f-ebc17809c32e', title: '🍖 Dragon bait', children: [] },
+                    ],
+                },
+                {
+                    id: '00a4314c-c140-450a-9a3a-3fdfea87a289',
+                    title: 'Hardware',
+                    children: [{ id: '39249c4a-4132-4915-8dc9-0422d10b6c73', title: '🗡️ Sword', children: [] }],
+                },
+            ],
+        },
+        {
+            id: '47077606-c469-40d9-8c6f-6fa1bff1f76f',
+            title: '🧠 Reminders',
+            children: [
+                { id: '5bb660e4-e092-4e06-807e-9540d9d37247', title: '📞 Call family', children: [] },
+                { id: '2223020c-5041-4a5c-80c3-fabfc4ff13e5', title: '🙏 Be grateful', children: [] },
+                { id: '79080099-692b-420c-90f6-014ca333e98a', title: '💤 Get to bed early', children: [] },
+            ],
+        },
+    ],
+};
