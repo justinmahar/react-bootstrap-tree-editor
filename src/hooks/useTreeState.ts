@@ -2,7 +2,7 @@ import React from 'react';
 import { Tree, TreeNode } from 'versatile-tree';
 import { defaultTreeControllerOptions } from './TreeControllerOptions';
 
-const defaultTreeData = {
+export const defaultTreeData = {
   [defaultTreeControllerOptions.titlePropertyName]: 'root',
   children: [],
 };

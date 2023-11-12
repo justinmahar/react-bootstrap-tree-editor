@@ -7,21 +7,16 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Example } from '../components/Example';
+import { TreeEditorDemo } from '../components/TreeEditorDemo';
 
 export default {
-  title: 'Stories/Example',
-  component: Example,
-} as ComponentMeta<typeof Example>;
+  title: 'Stories/Demo',
+  component: TreeEditorDemo,
+} as ComponentMeta<typeof TreeEditorDemo>;
 
-const Template: ComponentStory<typeof Example> = (args) => <Example {...args} />;
+const Template: ComponentStory<typeof TreeEditorDemo> = (args) => <TreeEditorDemo {...args} />;
 
-export const Hello = Template.bind({});
-Hello.args = {
-  label: 'Hello',
-};
-
-export const World = Template.bind({});
-World.args = {
-  label: 'World',
-};
+export const Demo = Template.bind({});
+// Demo.args = {
+//   label: 'World',
+// };
