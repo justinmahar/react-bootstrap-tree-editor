@@ -25,7 +25,34 @@
   "bugs": {
     "url": "https://github.com/justinmahar/react-bootstrap-tree-editor/issues"
   },
-  "keywords": [],
+  "keywords": [
+    "tree",
+    "view",
+    "viewer",
+    "edit",
+    "editor",
+    "structure",
+    "react",
+    "bootstrap",
+    "filter",
+    "search",
+    "node",
+    "searchable",
+    "versatile",
+    "shortcut",
+    "hotkey",
+    "shortcuts",
+    "hotkeys",
+    "focus",
+    "expansion",
+    "expand",
+    "collapse",
+    "list",
+    "todo",
+    "task",
+    "manager",
+    "management"
+  ],
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0",
     "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0"
