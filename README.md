@@ -63,6 +63,8 @@ If this project helped you, please consider buying me a coffee. Your support is 
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
+- [Available Components](#available-components)
+- [Available Hooks](#available-hooks)
 - [TypeScript](#typescript)
 - [Icon Attribution](#icon-attribution)
 - [Contributing](#contributing)
@@ -77,7 +79,7 @@ npm i react-bootstrap-tree-editor
 
 ## Quick Start
 
-The following will get you up and running quickly with this library. It's highly recommended you check out the [demo](https://justinmahar.github.io/react-bootstrap-tree-editor/?path=/story/stories-demo--demo) and its [source](https://github.com/justinmahar/react-bootstrap-tree-editor/blob/master/src/components/TreeEditorDemo.tsx) once you have the component rendering in your application.
+It's highly recommended you check out the [demo](https://justinmahar.github.io/react-bootstrap-tree-editor/?path=/story/stories-demo--demo) and its [source](https://github.com/justinmahar/react-bootstrap-tree-editor/blob/master/src/components/TreeEditorDemo.tsx) to quickly get yourself up and running. 
 
 Import the following:
 
@@ -121,6 +123,21 @@ Render the component:
 ```
 
 [lock:typescript]::🚫---------------------------------------
+
+## Available Components
+
+- **BasicTreeNodeComponent** - This is the main component used to render and edit trees. Use this as a starting point if you'd like to customize how trees are rendered.
+
+See also:
+
+- **BasicTreeNodeDropdown** - This component is used inside BasicTreeNodeComponent to render dropdowns.
+- **BasicTreeNodeTitleComponent** - This component is used inside BasicTreeNodeComponent to render the node's title (as text, or as an input).
+
+## Available Hooks
+
+- **useTreeState** - A convenience hook for managing tree state with `React.useState()`.
+- **useTreeController** - This is the main hook used to control the tree editor.
+- **useTreeShortcuts** - A hook that listens for customizable shortcuts on the provided DOM object.
 
 ## TypeScript
 
