@@ -46,6 +46,7 @@ const TreeEditorDemo = () => {
     const handleSearchFocus = () => {
         treeController.focus.setFocusedNode(undefined);
     };
+    // Keyboard shortcut handling (for Demo only -- see useTreeShortcuts for more)
     React.useEffect(() => {
         const keyDownListener = (e) => {
             // For debugging:
@@ -73,6 +74,7 @@ const TreeEditorDemo = () => {
     React.useEffect(() => {
         treeController.expansions.expandAll();
     }, []); // Leave deps empty (run only once)
+    // Handle setting the search filter
     React.useEffect(() => {
         const subs = new react_sub_unsub_1.Subs();
         if (trimmedEnteredSearch) {

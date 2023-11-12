@@ -29,3 +29,5 @@ __exportStar(require("./hooks/useTreeFocus"), exports);
 __exportStar(require("./hooks/useTreeMutations"), exports);
 __exportStar(require("./hooks/useTreeShortcuts"), exports);
 __exportStar(require("./hooks/useTreeState"), exports);
+// Utils
+__exportStar(require("./utils/utils"), exports);

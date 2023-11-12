@@ -11,3 +11,4 @@ export * from './hooks/useTreeFocus';
 export * from './hooks/useTreeMutations';
 export * from './hooks/useTreeShortcuts';
 export * from './hooks/useTreeState';
+export * from './utils/utils';
