@@ -2,7 +2,7 @@
   🌲 React Bootstrap Tree Editor
 </h2>
 <h3 align="center">
-  An interactive tree editor built on react-bootstrap
+  An interactive tree editor built on react-bootstrap.
 </h3>
 <p align="center">
   <a href="https://badge.fury.io/js/react-bootstrap-tree-editor" target="_blank" rel="noopener noreferrer"><img src="https://badge.fury.io/js/react-bootstrap-tree-editor.svg" alt="npm Version" /></a>&nbsp;
