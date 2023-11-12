@@ -38,7 +38,7 @@ const fa_1 = require("react-icons/fa");
 const TreeEditorDemo = () => {
     const [treeEditingEnabled, setTreeEditingEnabled] = React.useState(true);
     const treeOptions = TreeControllerOptions_1.defaultTreeControllerOptions;
-    const [tree, setTree] = (0, useTreeState_1.useTreeState)(exports.demoTreeData);
+    const [tree, setTree] = (0, useTreeState_1.useTreeState)(useTreeState_1.defaultTreeData);
     const treeController = (0, useTreeController_1.useTreeController)(tree, setTree, treeOptions);
     const [enteredSearch, setEnteredSearch] = React.useState('');
     const trimmedEnteredSearch = enteredSearch.trim();
@@ -98,7 +98,7 @@ const TreeEditorDemo = () => {
                                 "This is a demo of",
                                 ' ',
                                 React.createElement("a", { href: "https://github.com/justinmahar/react-bootstrap-tree-editor" }, "react-bootstrap-tree-editor"),
-                                ", build on ",
+                                ", built on ",
                                 React.createElement("a", { href: "https://react-bootstrap.netlify.app/" }, "react-bootstrap"),
                                 " and powered by",
                                 ' ',
