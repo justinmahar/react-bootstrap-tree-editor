@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import * as React from 'react';
 import { Alert, Badge, Col, Container, Form, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
-import { FaEllipsisV } from 'react-icons/fa';
+import { FaEllipsisV, FaQuestionCircle } from 'react-icons/fa';
 import { Subs } from 'react-sub-unsub';
 import { TreeNode } from 'versatile-tree';
 import { TreeControllerOptions, defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
@@ -12,6 +12,7 @@ import { KeyCode } from '../utils/utils';
 import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
 
 export const TreeEditorDemo = () => {
+  const [showAlert, setShowAlert] = React.useState(true);
   const [treeEditingEnabled, setTreeEditingEnabled] = React.useState(true);
   const treeOptions: TreeControllerOptions = defaultTreeControllerOptions;
   const [tree, setTree] = useTreeState(demoTreeData);
@@ -78,8 +79,8 @@ export const TreeEditorDemo = () => {
       <Row>
         <Col sm={{ offset: 2, span: 8 }}>
           <div className="d-flex flex-column gap-3">
-            <div className="d-flex flex-column gap-3">
-              <Alert variant="primary">
+            {showAlert && (
+              <Alert variant="primary" dismissible onClose={() => setShowAlert(false)}>
                 <p>
                   This is a demo of{' '}
                   <a href="https://github.com/justinmahar/react-bootstrap-tree-editor">react-bootstrap-tree-editor</a>,
@@ -130,57 +131,70 @@ export const TreeEditorDemo = () => {
                   you're feeling appreciative! ☕️
                 </p>
               </Alert>
-              <div className="d-flex justify-content-between align-items-center gap-2">
-                <h4 className="mb-0">Tree Editor</h4>
-                <div className="d-flex align-items-center gap-1">
-                  <OverlayTrigger
-                    placement="left"
-                    delay={{ show: 0, hide: 0 }}
-                    overlay={
-                      <Tooltip id="tooltip-editing">
-                        Switch to {!treeEditingEnabled ? 'Edit' : 'View'} mode. (Ctrl+Shift+E)
-                      </Tooltip>
+            )}
+            <div className="d-flex justify-content-between align-items-center gap-2">
+              <h4 className="mb-0">
+                Tree Editor
+                {!showAlert && (
+                  <FaQuestionCircle
+                    className="ms-2 text-primary"
+                    style={{ fontSize: '50%', cursor: 'pointer' }}
+                    onClick={() => setShowAlert(true)}
+                  />
+                )}
+              </h4>
+              <div className="d-flex align-items-center gap-1">
+                <OverlayTrigger
+                  placement="left"
+                  delay={{ show: 0, hide: 0 }}
+                  overlay={
+                    <Tooltip id="tooltip-editing">
+                      Switch to {!treeEditingEnabled ? 'Edit' : 'View'} mode. (Ctrl+Shift+E)
+                    </Tooltip>
+                  }
+                >
+                  <Form.Check
+                    type="switch"
+                    label={
+                      <Badge bg={treeEditingEnabled ? 'primary' : 'dark'}>{treeEditingEnabled ? 'Edit' : 'View'}</Badge>
                     }
-                  >
-                    <Form.Check
-                      type="switch"
-                      label={
-                        <Badge bg={treeEditingEnabled ? 'primary' : 'dark'}>
-                          {treeEditingEnabled ? 'Edit' : 'View'}
-                        </Badge>
-                      }
-                      className="user-select-none"
-                      id="toggle-switch-editing"
-                      checked={!!treeEditingEnabled}
-                      onChange={(e) => setTreeEditingEnabled(e.target.checked)}
-                    />
-                  </OverlayTrigger>
-                </div>
+                    className="user-select-none"
+                    id="toggle-switch-editing"
+                    checked={!!treeEditingEnabled}
+                    onChange={(e) => setTreeEditingEnabled(e.target.checked)}
+                  />
+                </OverlayTrigger>
               </div>
-              <Form.Group controlId="search-group">
-                <Form.Control
-                  type="text"
-                  placeholder="Search"
-                  value={enteredSearch}
-                  onChange={(e) => setEnteredSearch(e.target.value)}
-                  onFocus={handleSearchFocus}
-                />
-              </Form.Group>
-              {enteredSearch && (
-                <div>
-                  Showing <Badge bg="dark">{treeController.filters.filteredNodes.length}</Badge> result
-                  {treeController.filters.filteredNodes.length !== 1 && 's'}
-                </div>
-              )}
-              <BasicTreeNodeComponent
-                node={treeController.tree}
-                treeController={treeController}
-                editable={!!treeEditingEnabled}
-                shortcuts={shortcuts}
-                showBullets={!treeEditingEnabled}
-                showPointer={false}
-              />
             </div>
+            <Form.Group controlId="search-group">
+              <Form.Control
+                type="text"
+                placeholder="Search"
+                value={enteredSearch}
+                onChange={(e) => setEnteredSearch(e.target.value)}
+                onFocus={handleSearchFocus}
+              />
+            </Form.Group>
+            {enteredSearch && (
+              <div>
+                Showing <Badge bg="dark">{treeController.filters.filteredNodes.length}</Badge> result
+                {treeController.filters.filteredNodes.length !== 1 && 's'}
+              </div>
+            )}
+            <BasicTreeNodeComponent
+              node={treeController.tree}
+              treeController={treeController}
+              editable={!!treeEditingEnabled}
+              shortcuts={shortcuts}
+              showBullets={!treeEditingEnabled}
+              showPointer={false}
+            />
+            <p className="mt-5 text-center text-muted">
+              Found it helpful?{' '}
+              <a href="https://github.com/justinmahar/react-bootstrap-tree-editor">Star it on GitHub</a> ⭐️ or{' '}
+              <a href="https://github.com/justinmahar/react-bootstrap-tree-editor#donate">buy me a coffee</a> ☕️ if
+              you're feeling appreciative!
+            </p>
           </div>
         </Col>
       </Row>
