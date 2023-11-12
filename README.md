@@ -17,12 +17,12 @@ Read the **[official documentation](https://justinmahar.github.io/react-bootstra
 
 ## Overview
 
-This section will contain an overview so people can have a high-level understanding of the project.
+An interactive tree editor built on react-bootstrap.
 
 ### Features include:
 
-- **🚀 List your features, use fun [emojis](https://emojipedia.org/search/?q=rocket)**
-  - Give a little more info on each feature or mention benefits.
+- **🌲 Interactive tree editing**
+  - React-Bootstrap powered component for editing trees
 
 [lock:donate]::🚫---------------------------------------
 
@@ -57,14 +57,47 @@ npm i react-bootstrap-tree-editor
 
 ## Quick Start
 
-This section will contain a copy/paste example so people can get started quickly.
+The following will get you up and running quickly with this library. It's highly recommended you check out the [demo](https://justinmahar.github.io/react-bootstrap-tree-editor/?path=/story/stories-demo--demo) and its [source](https://github.com/justinmahar/react-bootstrap-tree-editor/blob/master/src/components/TreeEditorDemo.tsx) once you have the component rendering in your application.
+
+Import the following:
 
 ```jsx
-import { Example } from 'react-bootstrap-tree-editor';
+import { defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
+import { useTreeController } from '../hooks/useTreeController';
+import { useTreeShortcuts } from '../hooks/useTreeShortcuts';
+import { defaultTreeData, useTreeState } from '../hooks/useTreeState';
+import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
 ```
 
+Inside your function component:
+
 ```jsx
-<Example label="Example Component" />
+const treeOptions = defaultTreeControllerOptions;
+const [tree, setTree] = useTreeState(defaultTreeData);
+const treeController = useTreeController(tree, setTree, treeOptions);
+const shortcuts = useTreeShortcuts(treeController, document);
+
+// Ensure there's always at least one item to edit
+React.useEffect(() => {
+  if (!treeController.tree.hasChildren()) {
+    const newNodeData = treeController.options.createNewData();
+    const node = treeController.mutations.addChildNodeData(treeController.tree, newNodeData);
+    treeController.focus.setFocusedNode(node);
+  }
+}, [treeController.focus, treeController.mutations, treeController.tree, treeController.options]);
+```
+
+Render the component: 
+
+```jsx
+<BasicTreeNodeComponent
+  node={treeController.tree}
+  treeController={treeController}
+  editable={true}
+  shortcuts={shortcuts}
+  showBullets={false}
+  showPointer={false}
+/>
 ```
 
 [lock:typescript]::🚫---------------------------------------
