@@ -45,8 +45,8 @@ export declare const useTreeController: (tree: Tree, setTree: (newTree: Tree | T
         setFilter: (filter: import("./useTreeFilter").TreeNodeFilter | undefined) => void;
         hasFilter: boolean;
         filteredNodes: TreeNode[];
-        isFilteredNode: (nodeOrId?: string | TreeNode | undefined) => true;
-        isFilterAncestor: (nodeOrId?: string | TreeNode | undefined) => true;
+        isFilteredNode: (nodeOrId?: string | TreeNode | undefined) => boolean;
+        isFilterAncestor: (nodeOrId?: string | TreeNode | undefined) => boolean;
     };
 };
 export type TreeController = ReturnType<typeof useTreeController>;

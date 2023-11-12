@@ -4,7 +4,7 @@ export declare const useTreeFilter: (tree: Tree, treeOptions: TreeControllerOpti
     setFilter: (filter: TreeNodeFilter | undefined) => void;
     hasFilter: boolean;
     filteredNodes: TreeNode[];
-    isFilteredNode: (nodeOrId?: TreeNode | string) => true;
-    isFilterAncestor: (nodeOrId?: TreeNode | string) => true;
+    isFilteredNode: (nodeOrId?: TreeNode | string) => boolean;
+    isFilterAncestor: (nodeOrId?: TreeNode | string) => boolean;
 };
 export type TreeNodeFilter = (node?: TreeNode) => boolean;
