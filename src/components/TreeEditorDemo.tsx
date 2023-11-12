@@ -9,6 +9,7 @@ import { useTreeShortcuts } from '../hooks/useTreeShortcuts';
 import { useTreeState } from '../hooks/useTreeState';
 import { KeyCode } from '../utils/utils';
 import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
+import { FaEllipsisV } from 'react-icons/fa';
 
 export const TreeEditorDemo = () => {
   const [treeEditingEnabled, setTreeEditingEnabled] = React.useState(true);
@@ -77,15 +78,45 @@ export const TreeEditorDemo = () => {
           <div className="d-flex flex-column gap-3">
             <div className="d-flex flex-column gap-3">
               <Alert variant="primary">
-                This is a demo of{' '}
-                <a href="https://github.com/justinmahar/react-bootstrap-tree-editor">react-bootstrap-tree-editor</a>,
-                powered by <a href="https://github.com/justinmahar/versatile-tree">versatile-tree</a>. You will likely
-                need something more custom, but this demo serves as a good starting point should you be interested in
-                using this project. You can{' '}
-                <a href="https://github.com/justinmahar/react-bootstrap-tree-editor/blob/master/src/components/TreeEditorDemo.tsx">
-                  view the source here
-                </a>
-                .
+                <p>
+                  This is a demo of{' '}
+                  <a href="https://github.com/justinmahar/react-bootstrap-tree-editor">react-bootstrap-tree-editor</a>,
+                  powered by <a href="https://github.com/justinmahar/versatile-tree">versatile-tree</a>. You will likely
+                  want to customize this further, but this demo serves as a good starting point should you be interested
+                  in using this project.
+                </p>
+                <p>
+                  A few handy things you can try out:
+                  <ul>
+                    <li>
+                      <span className="fw-bold">Edit/View Modes</span> - Switch from Edit to View mode using the toggle
+                      switch.
+                    </li>
+                    <li>
+                      <span className="fw-bold">Keyboard Editing</span> - Use Enter to insert items below, Shift+Enter
+                      to insert inside. Customizable shortcuts are available for moving items.
+                    </li>
+                    <li>
+                      <span className="fw-bold">Actions Dropdown</span> - Click the ellipsis <FaEllipsisV /> to view
+                      actions and their associated shortcuts.
+                    </li>
+                    <li>
+                      <span className="fw-bold">Deletion &amp; Recovery</span> - Delete items from the tree and recover
+                      them if deleted on accident.
+                    </li>
+                    <li>
+                      <span className="fw-bold">Searching</span> - Full tree searching, including auto node expansion on
+                      matches. Try searching for "dragon".
+                    </li>
+                  </ul>
+                </p>
+                <p className="mb-0">
+                  You can{' '}
+                  <a href="https://github.com/justinmahar/react-bootstrap-tree-editor/blob/master/src/components/TreeEditorDemo.tsx">
+                    view the source here
+                  </a>
+                  .
+                </p>
               </Alert>
               <div className="d-flex justify-content-between align-items-center gap-2">
                 <h4 className="mb-0">Tree Editor</h4>
@@ -135,7 +166,7 @@ export const TreeEditorDemo = () => {
                 editable={!!treeEditingEnabled}
                 shortcuts={shortcuts}
                 showBullets={!treeEditingEnabled}
-                showPointer={treeEditingEnabled}
+                showPointer={false}
               />
             </div>
           </div>

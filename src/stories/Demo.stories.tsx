@@ -12,6 +12,12 @@ import { TreeEditorDemo } from '../components/TreeEditorDemo';
 export default {
   title: 'Stories/Demo',
   component: TreeEditorDemo,
+  parameters: {
+    controls: {
+      disabled: true,
+    },
+    options: { showPanel: false },
+  },
 } as ComponentMeta<typeof TreeEditorDemo>;
 
 const Template: ComponentStory<typeof TreeEditorDemo> = (args) => <TreeEditorDemo />;
