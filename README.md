@@ -28,7 +28,7 @@ An interactive tree editor built on [react-bootstrap](https://react-bootstrap.ne
 ### Features include:
 
 - **🌲 Interactive tree editing**
-  - React-Bootstrap powered hooks and components for editing trees.
+  - React-Bootstrap powered components and hooks for editing trees.
 - **🌐 Expansion Management**
   - Track which nodes are expanded/collapsed.
 - **👉 Focus Management**
