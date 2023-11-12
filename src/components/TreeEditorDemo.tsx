@@ -1,20 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import * as React from 'react';
 import { Alert, Badge, Col, Container, Form, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import { FaEllipsisV } from 'react-icons/fa';
 import { Subs } from 'react-sub-unsub';
 import { TreeNode } from 'versatile-tree';
 import { TreeControllerOptions, defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
 import { TreeController, useTreeController } from '../hooks/useTreeController';
 import { useTreeShortcuts } from '../hooks/useTreeShortcuts';
-import { defaultTreeData, useTreeState } from '../hooks/useTreeState';
+import { useTreeState } from '../hooks/useTreeState';
 import { KeyCode } from '../utils/utils';
 import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
-import { FaEllipsisV } from 'react-icons/fa';
 
 export const TreeEditorDemo = () => {
   const [treeEditingEnabled, setTreeEditingEnabled] = React.useState(true);
   const treeOptions: TreeControllerOptions = defaultTreeControllerOptions;
-  const [tree, setTree] = useTreeState(defaultTreeData);
+  const [tree, setTree] = useTreeState(demoTreeData);
   const treeController: TreeController = useTreeController(tree, setTree, treeOptions);
 
   const [enteredSearch, setEnteredSearch] = React.useState('');
