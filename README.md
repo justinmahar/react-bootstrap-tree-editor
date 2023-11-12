@@ -65,6 +65,7 @@ If this project helped you, please consider buying me a coffee. Your support is 
 - [Quick Start](#quick-start)
 - [Available Components](#available-components)
 - [Available Hooks](#available-hooks)
+- [Tree Options](#tree-options)
 - [TypeScript](#typescript)
 - [Icon Attribution](#icon-attribution)
 - [Contributing](#contributing)
@@ -138,6 +139,33 @@ See also:
 - **useTreeState** - A convenience hook for managing tree state with `React.useState()`.
 - **useTreeController** - This is the main hook used to control the tree editor.
 - **useTreeShortcuts** - A hook that listens for customizable shortcuts on the provided DOM object.
+
+## Tree Options
+
+By default, tree nodes have an ID with property name `id`, and titles with property name `title`. New node data is created with an ID set to a [random v4 UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)). For example, `e7a422f6-d6f0-4c71-8545-9b2c71c50491`.
+
+The default options can be imported via the following:
+
+```js
+import { defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
+```
+
+To customize options, you can provide useTreeController with your own tree options. For example, let's suppose we'd like to use `uid` as the ID prop and `name` as the title prop, and generate our own custom IDs. To support this, you can create your own custom tree controller options like so:
+
+```js
+// Custom ID generator
+const customIdGenerator = () => `${Date.now()}`;
+
+// Custom tree controller options
+const customTreeControllerOptions = {
+  idPropertyName: 'uid',
+  titlePropertyName: 'name',
+  createNewData: () => ({ uid: customIdGenerator(), name: '' }),
+};
+
+// ...
+const treeController = useTreeController(tree, setTree, treeOptions);
+```
 
 ## TypeScript
 
