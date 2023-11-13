@@ -159,7 +159,7 @@ To customize options, you can provide useTreeController with your own tree optio
 // Custom ID generator
 const customIdGenerator = () => `${Date.now()}`;
 
-// Custom tree controller options
+// Configure custom ID, title, and new node data
 const customTreeControllerOptions = {
   idPropertyName: 'uid',
   titlePropertyName: 'name',
@@ -167,7 +167,7 @@ const customTreeControllerOptions = {
 };
 
 // ...
-const treeController = useTreeController(tree, setTree, treeOptions);
+const treeController = useTreeController(tree, setTree, customTreeControllerOptions);
 ```
 
 ## TypeScript
