@@ -10,6 +10,7 @@ import { useTreeShortcuts } from '../hooks/useTreeShortcuts';
 import { useTreeState } from '../hooks/useTreeState';
 import { KeyCode } from '../utils/utils';
 import { BasicTreeNodeComponent } from './BasicTreeNodeComponent';
+import { DIVIDER_TITLE } from './BasicTreeNodeTitleComponent';
 
 export const TreeEditorDemo = () => {
   const [showAlert, setShowAlert] = React.useState(true);
@@ -17,8 +18,6 @@ export const TreeEditorDemo = () => {
   const treeOptions: TreeControllerOptions = defaultTreeControllerOptions;
   const [tree, setTree] = useTreeState(demoTreeData);
   const treeController: TreeController = useTreeController(tree, setTree, treeOptions);
-
-  console.log(tree.toJSON());
 
   const [enteredSearch, setEnteredSearch] = React.useState('');
   const trimmedEnteredSearch = enteredSearch.trim();
@@ -65,10 +64,12 @@ export const TreeEditorDemo = () => {
   React.useEffect(() => {
     const subs = new Subs();
     if (trimmedEnteredSearch) {
-      const newFilter = (node?: TreeNode) =>
-        !!node &&
-        node.getData()[treeOptions.titlePropertyName] &&
-        node.getData()[treeOptions.titlePropertyName].toLowerCase().includes(enteredSearch.toLowerCase());
+      const newFilter = (node?: TreeNode) => {
+        const nodeTitle =
+          (!!node && node.getData()[treeOptions.titlePropertyName] && node.getData()[treeOptions.titlePropertyName]) ??
+          '';
+        return nodeTitle !== DIVIDER_TITLE && nodeTitle.toLowerCase().includes(trimmedEnteredSearch.toLowerCase());
+      };
       treeController.filters.setFilter(newFilter);
     } else {
       treeController.filters.setFilter(undefined);
