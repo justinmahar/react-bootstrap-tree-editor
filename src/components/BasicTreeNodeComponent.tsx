@@ -5,7 +5,7 @@ import { FaAngleDown, FaAngleRight, FaCircle, FaHandPointRight } from 'react-ico
 import { TreeNode } from 'versatile-tree';
 import { TreeController, UNDEFINED_ID } from '../hooks/useTreeController';
 import { TreeShortcuts } from '../hooks/useTreeShortcuts';
-import { BasicTreeNodeTitleComponent } from './BasicTreeNodeTitleComponent';
+import { BasicTreeNodeTitleComponent, DIVIDER_TITLE } from './BasicTreeNodeTitleComponent';
 import { BasicTreeNodeDropdown } from './BasicTreeNodeDropdown';
 import { key } from '../utils/utils';
 
@@ -32,7 +32,8 @@ export const BasicTreeNodeComponent = ({
   const children: TreeNode[] = node.getChildren() ?? [];
   const hasChildren = node.hasChildren();
   const isFocused = treeController.focus.isFocusedNode(node);
-  const isFilteredNode = treeController.filters.isFilteredNode(node);
+  const title = node.getData()[treeController.options.titlePropertyName] ?? '';
+  const isDivider = title === DIVIDER_TITLE;
 
   const handleToggleShowChildren = () => {
     if (node.hasChildren()) {
@@ -125,7 +126,7 @@ export const BasicTreeNodeComponent = ({
               className="d-flex justify-content-center align-items-center user-select-none"
               style={{ width: iconWidth }}
             >
-              {showBullets && <FaCircle style={{ fontSize: '30%' }} />}
+              {showBullets && !isDivider && <FaCircle style={{ fontSize: '30%' }} />}
             </div>
           )}
           <BasicTreeNodeTitleComponent

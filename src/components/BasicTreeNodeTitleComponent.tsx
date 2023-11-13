@@ -4,6 +4,8 @@ import { Form } from 'react-bootstrap';
 import { TreeNode } from 'versatile-tree';
 import { TreeController } from '../hooks/useTreeController';
 
+export const DIVIDER_TITLE = '---';
+
 const editDebounceDelayMillis = 200;
 
 export interface BasicTreeNodeTitleComponentProps {
@@ -68,8 +70,8 @@ export const BasicTreeNodeTitleComponent = ({
     );
   } else {
     titleComponent =
-      enteredTitle === '---' ? (
-        <hr className="w-100 my-0 py-0" />
+      enteredTitle === DIVIDER_TITLE ? (
+        <hr className="w-100 my-2 py-0" />
       ) : (
         <div className="p-1 w-100" style={{ fontSize: '105%' }}>
           {enteredTitle}

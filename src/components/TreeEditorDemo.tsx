@@ -18,6 +18,8 @@ export const TreeEditorDemo = () => {
   const [tree, setTree] = useTreeState(demoTreeData);
   const treeController: TreeController = useTreeController(tree, setTree, treeOptions);
 
+  console.log(tree.toJSON());
+
   const [enteredSearch, setEnteredSearch] = React.useState('');
   const trimmedEnteredSearch = enteredSearch.trim();
 
@@ -109,6 +111,10 @@ export const TreeEditorDemo = () => {
                     <li>
                       <span className="fw-bold">Deletion &amp; Recovery</span> - Delete items from the tree and recover
                       them if deleted on accident.
+                    </li>
+                    <li>
+                      <span className="fw-bold">Dividers</span> - Use triple-dash (<code>---</code>) to create a
+                      horizontal divider when in View Mode.
                     </li>
                     <li>
                       <span className="fw-bold">Searching</span> - Full tree searching, including auto node expansion on
@@ -240,7 +246,9 @@ export const demoTreeData = {
       children: [
         { id: '5bb660e4-e092-4e06-807e-9540d9d37247', title: '📞 Call family', children: [] },
         { id: '2223020c-5041-4a5c-80c3-fabfc4ff13e5', title: '🙏 Be grateful', children: [] },
+        { id: '802795e1-4223-4922-96a5-714bc84f4465', title: '---', children: [] },
         { id: '79080099-692b-420c-90f6-014ca333e98a', title: '💤 Get to bed early', children: [] },
+        { id: '06de1566-ba9b-48e0-9645-af8b9ab379ea', title: '💪 Training', children: [] },
       ],
     },
   ],
