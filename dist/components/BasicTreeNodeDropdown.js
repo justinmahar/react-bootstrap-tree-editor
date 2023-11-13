@@ -84,7 +84,7 @@ const BasicTreeNodeDropdown = (_a) => {
     return (react_1.default.createElement("div", Object.assign({}, props, { className: (0, classnames_1.default)(props.className), style: Object.assign({}, props.style) }),
         react_1.default.createElement(NoCaretAfterToggle, null,
             react_1.default.createElement(react_bootstrap_1.Dropdown, null,
-                react_1.default.createElement(react_bootstrap_1.Dropdown.Toggle, { variant: "success", id: `dropdown-menu-${(_b = node.getData()[treeController.options.idPropertyName]) !== null && _b !== void 0 ? _b : useTreeController_1.UNDEFINED_ID}`, as: "div", className: "cursor-pointer", onMouseDown: () => handleEllipsisMouseDown(), onTouchStartCapture: () => handleEllipsisMouseDown() },
+                react_1.default.createElement(react_bootstrap_1.Dropdown.Toggle, { variant: "success", id: `dropdown-menu-${(_b = node.getData()[treeController.options.idPropertyName]) !== null && _b !== void 0 ? _b : useTreeController_1.UNDEFINED_ID}`, as: "div", style: { cursor: 'pointer' }, onMouseDown: () => handleEllipsisMouseDown(), onTouchStartCapture: () => handleEllipsisMouseDown() },
                     react_1.default.createElement(fa_1.FaEllipsisV, null)),
                 react_1.default.createElement(react_bootstrap_1.Dropdown.Menu, null,
                     react_1.default.createElement(react_bootstrap_1.Dropdown.Item, { className: dropdownItemClassName, onClick: () => handleNewItemBelow(), disabled: false },
