@@ -108,7 +108,7 @@ export const BasicTreeNodeDropdown = ({ node, treeController, shortcuts, ...prop
             variant="success"
             id={`dropdown-menu-${node.getData()[treeController.options.idPropertyName] ?? UNDEFINED_ID}`}
             as="div"
-            className="cursor-pointer"
+            style={{ cursor: 'pointer' }}
             onMouseDown={() => handleEllipsisMouseDown()}
             onTouchStartCapture={() => handleEllipsisMouseDown()}
           >

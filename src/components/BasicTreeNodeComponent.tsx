@@ -113,8 +113,8 @@ export const BasicTreeNodeComponent = ({
           )}
           {hasChildren && (
             <div
-              className="d-flex justify-content-center align-items-center user-select-none cursor-pointer"
-              style={{ width: iconWidth }}
+              className="d-flex justify-content-center align-items-center user-select-none"
+              style={{ width: iconWidth, cursor: 'pointer' }}
               onClick={handleToggleShowChildren}
             >
               {expanded && hasChildren ? <FaAngleDown /> : <FaAngleRight style={{ opacity: !hasChildren ? 0 : 1 }} />}
