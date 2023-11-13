@@ -3,10 +3,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BasicTreeNodeTitleComponent = void 0;
+exports.BasicTreeNodeTitleComponent = exports.DIVIDER_TITLE = void 0;
 const classnames_1 = __importDefault(require("classnames"));
 const react_1 = __importDefault(require("react"));
 const react_bootstrap_1 = require("react-bootstrap");
+exports.DIVIDER_TITLE = '---';
 const editDebounceDelayMillis = 200;
 const BasicTreeNodeTitleComponent = ({ node, treeController, editable = false, hovering, }) => {
     var _a;
@@ -44,7 +45,7 @@ const BasicTreeNodeTitleComponent = ({ node, treeController, editable = false, h
     }
     else {
         titleComponent =
-            enteredTitle === '---' ? (react_1.default.createElement("hr", { className: "w-100 my-0 py-0" })) : (react_1.default.createElement("div", { className: "p-1 w-100", style: { fontSize: '105%' } }, enteredTitle));
+            enteredTitle === exports.DIVIDER_TITLE ? (react_1.default.createElement("hr", { className: "w-100 my-2 py-0" })) : (react_1.default.createElement("div", { className: "p-1 w-100", style: { fontSize: '105%' } }, enteredTitle));
     }
     return titleComponent;
 };

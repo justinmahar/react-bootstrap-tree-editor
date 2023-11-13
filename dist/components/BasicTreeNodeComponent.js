@@ -23,14 +23,15 @@ const BasicTreeNodeTitleComponent_1 = require("./BasicTreeNodeTitleComponent");
 const BasicTreeNodeDropdown_1 = require("./BasicTreeNodeDropdown");
 const utils_1 = require("../utils/utils");
 const BasicTreeNodeComponent = (_a) => {
-    var _b;
+    var _b, _c;
     var { node, treeController, editable = false, showBullets = false, showPointer = false, shortcuts } = _a, props = __rest(_a, ["node", "treeController", "editable", "showBullets", "showPointer", "shortcuts"]);
     const expanded = treeController.expansions.isExpandedNode(node);
     const [hovering, setHovering] = react_1.default.useState(false);
     const children = (_b = node.getChildren()) !== null && _b !== void 0 ? _b : [];
     const hasChildren = node.hasChildren();
     const isFocused = treeController.focus.isFocusedNode(node);
-    const isFilteredNode = treeController.filters.isFilteredNode(node);
+    const title = (_c = node.getData()[treeController.options.titlePropertyName]) !== null && _c !== void 0 ? _c : '';
+    const isDivider = title === BasicTreeNodeTitleComponent_1.DIVIDER_TITLE;
     const handleToggleShowChildren = () => {
         if (node.hasChildren()) {
             treeController.expansions.toggleExpandNode(node);
@@ -70,7 +71,7 @@ const BasicTreeNodeComponent = (_a) => {
             showPointer && isFocused && (react_1.default.createElement("div", { className: "position-absolute", style: { left: -20 } },
                 react_1.default.createElement(fa_1.FaHandPointRight, null))),
             hasChildren && (react_1.default.createElement("div", { className: "d-flex justify-content-center align-items-center user-select-none", style: { width: iconWidth, cursor: 'pointer' }, onClick: handleToggleShowChildren }, expanded && hasChildren ? react_1.default.createElement(fa_1.FaAngleDown, null) : react_1.default.createElement(fa_1.FaAngleRight, { style: { opacity: !hasChildren ? 0 : 1 } }))),
-            !hasChildren && (react_1.default.createElement("div", { className: "d-flex justify-content-center align-items-center user-select-none", style: { width: iconWidth } }, showBullets && react_1.default.createElement(fa_1.FaCircle, { style: { fontSize: '30%' } }))),
+            !hasChildren && (react_1.default.createElement("div", { className: "d-flex justify-content-center align-items-center user-select-none", style: { width: iconWidth } }, showBullets && !isDivider && react_1.default.createElement(fa_1.FaCircle, { style: { fontSize: '30%' } }))),
             react_1.default.createElement(BasicTreeNodeTitleComponent_1.BasicTreeNodeTitleComponent, { node: node, treeController: treeController, editable: editable, hovering: hovering }),
             editable && (react_1.default.createElement("div", { className: "d-flex align-items-center gap-1 ms-1 user-select-none" },
                 react_1.default.createElement(BasicTreeNodeDropdown_1.BasicTreeNodeDropdown, { node: node, treeController: treeController, shortcuts: shortcuts }))))),
