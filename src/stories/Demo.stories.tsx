@@ -1,28 +1,17 @@
-/*
- * More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
- * More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
- * More on args: https://storybook.js.org/docs/react/writing-stories/args
- * More on argTypes: https://storybook.js.org/docs/react/api/argtypes
- */
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import { TreeEditorDemo } from '../components/TreeEditorDemo';
 
-export default {
-  title: 'Stories/Demo',
-  component: TreeEditorDemo,
+// === Setup ===
+const StoryComponent = TreeEditorDemo; // <-- Set to your component
+const meta: Meta<typeof StoryComponent> = {
+  title: 'Stories/Demo', // <-- Set to your story title
+  component: StoryComponent,
   parameters: {
-    controls: {
-      disabled: true,
-    },
-    options: { showPanel: false },
+    options: { showPanel: false }, // Don't show addons panel
   },
-} as ComponentMeta<typeof TreeEditorDemo>;
+};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-const Template: ComponentStory<typeof TreeEditorDemo> = (args) => <TreeEditorDemo />;
-
-export const Demo = Template.bind({});
-// Demo.args = {
-//   label: 'World',
-// };
+// === Stories ===
+export const Demo: Story = {};
