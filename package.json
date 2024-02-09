@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-tree-editor",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "coreVersion": "3.0.9",
   "author": "Justin Mahar <contact@justinmahar.com>",
   "description": "An interactive tree editor built on react-bootstrap.",
