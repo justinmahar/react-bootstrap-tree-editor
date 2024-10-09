@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import * as React from 'react';
-import { Alert, Badge, Col, Container, Form, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import { Alert, Badge, Button, Col, Container, Form, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { FaEllipsisV, FaQuestionCircle } from 'react-icons/fa';
 import { Subs } from 'react-sub-unsub';
-import { TreeNode } from 'versatile-tree';
+import { Tree, TreeNode } from 'versatile-tree';
 import { TreeControllerOptions, defaultTreeControllerOptions } from '../hooks/TreeControllerOptions';
 import { TreeController, useTreeController } from '../hooks/useTreeController';
 import { useTreeShortcuts } from '../hooks/useTreeShortcuts';
@@ -24,8 +24,18 @@ export const TreeEditorDemo = () => {
 
   const shortcuts = useTreeShortcuts(treeController, document);
 
+  // Use this to force tree to re-render when setting tree data
+  const [changeTime, setChangeTime] = React.useState(Date.now());
+
   const handleSearchFocus = () => {
     treeController.focus.setFocusedNode(undefined);
+  };
+
+  const resetTree = () => {
+    const newTree = new Tree(demoTreeData);
+    // Track when we changed the tree data ourselves
+    setChangeTime(Date.now());
+    setTree(newTree);
   };
 
   // Keyboard shortcut handling (for Demo only -- see useTreeShortcuts for more)
@@ -150,7 +160,10 @@ export const TreeEditorDemo = () => {
                   />
                 )}
               </h4>
-              <div className="d-flex align-items-center gap-1">
+              <div className="d-flex align-items-center gap-3">
+                <Button variant="outline-secondary" size="sm" onClick={() => resetTree()}>
+                  Reset
+                </Button>
                 <OverlayTrigger
                   placement="left"
                   delay={{ show: 0, hide: 0 }}
@@ -189,6 +202,7 @@ export const TreeEditorDemo = () => {
               </div>
             )}
             <BasicTreeNodeComponent
+              key={changeTime} // Ensures external changes to tree data are rendered
               node={treeController.tree}
               treeController={treeController}
               editable={!!treeEditingEnabled}

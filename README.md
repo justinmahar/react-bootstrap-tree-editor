@@ -67,6 +67,7 @@ If this project helped you, please consider buying me a coffee or sponsoring me.
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
+- [Setting Tree Data Externally](#setting-tree-data-externally)
 - [TypeScript](#typescript)
 - [Icon Attribution](#icon-attribution)
 - [Contributing](#contributing)
@@ -126,6 +127,42 @@ Render the component:
   showPointer={false}
 />
 ```
+
+## Setting Tree Data Externally
+
+If you'd like to set the tree data yourself outside of the editor, then you'll need to force the tree node component to re-render when you set the data.
+
+To do this, you can create a piece of state called `changeTime` that tracks when you set the data yourself. You'd then pass this value as the `key` prop to the `BasicTreeNodeComponent`.
+
+```ts
+// Use this to force tree to re-render when setting tree data
+const [changeTime, setChangeTime] = React.useState(Date.now());
+```
+
+```ts
+const resetTree = () => {
+  const newTree = new Tree(defaultTreeData);
+  // Track when we changed the tree data ourselves
+  setChangeTime(Date.now());
+  setTree(newTree);
+}
+```
+
+Add the `key` prop to `BasicTreeNodeComponent`, using the `changeTime` as the value:
+
+```jsx
+<BasicTreeNodeComponent
+  key={changeTime} // Ensures external changes to tree data are rendered
+  node={treeController.tree}
+  treeController={treeController}
+  editable={true}
+  shortcuts={shortcuts}
+  showBullets={false}
+  showPointer={false}
+/>
+```
+
+Now you can modify the tree using both the editor, and externally.
 
 <!-- [lock:typescript] 🚫--------------------------------------- -->
 
